@@ -11,6 +11,21 @@ class UsersController < ApplicationController
  end
 
 
+ post '/register' do
+   @user = User.new(params)
+
+  if  @user.save
+    @user.save
+   session[:id] = @user.id
+   redirect '/trails'
+
+ else
+   redirect '/register'
+ end
+end
+
+
+
 
 
 
