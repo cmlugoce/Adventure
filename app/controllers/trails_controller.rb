@@ -1,0 +1,3 @@
+class TrailsController < ApplicationController
+
+end 
