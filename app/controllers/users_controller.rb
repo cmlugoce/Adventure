@@ -30,12 +30,36 @@ get '/login' do
     redirect '/trails'
 
   else
-    erb :'users/login'
+    erb :'/users/login'
   end
 end
+ post '/login' do
+   @user = User.find_by(:username => params[:username])
+   if @user && @user.authenticate(params[:password])
+     flash[:notice] = "Welcome, #{@user.username}."
+     session[:id] = @user.id
+     redirect '/trails'
 
+   else
+     flash[:message] = "Invalid password and/or username"
+     redirect '/login'
+   end
+ end
 
+get '/logout' do
+  if logged_in?
+    session.clear
 
+    redirect '/login'
+ else
+  redirect '/'
+end
+end
+get 'users/:slug' do
+  @user = User.find_by_slug(params[:slug])
+  @trails = @user.trails
+erb :'/users/show'
+end
 
 
 
