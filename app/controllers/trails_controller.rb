@@ -4,7 +4,7 @@ class TrailsController < ApplicationController
 get '/trails' do
   if logged_in?
     @trails = Trail.all
-    erb :'/users/index'
+    erb :'/trails/index'
 
   else
     redirect '/login'
@@ -27,7 +27,7 @@ post '/trails' do
 
  get 'trails/new' do
    if logged_in?
-     erb :'/parks/new'
+     erb :'/trails/new'
 
    else
      redirect '/login'
@@ -57,15 +57,16 @@ post '/trails' do
  end
 
  patch '/trails/:id' do
-   if params[:name] == "" || params[:location] == "" | params[:date] == ""
+   if params[:name] == "" || params[:location] == "" || params[:date] == ""
      flash[:message] = "Please fill out the required fields."
-     redirect "/trails/#{{params[:id]}}/edit"
+     redirect "/trails/#{params[:id]}/edit"
    else
      @trail = Trail.find(params[:id])
      @trail.update(name: params[:name], location: params[:location], date: params[:date], notes: params[:notes], distance: params[:distance])
    end
    redirect "/trails/#{@trail.id}"
  end
+end
 
 
 delete '/trails/:id/delete' do
@@ -80,6 +81,7 @@ delete '/trails/:id/delete' do
   end
 end
 end
+
 
 
 

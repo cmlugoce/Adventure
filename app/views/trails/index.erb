@@ -1,7 +1,9 @@
-<h1>Hello, <%= @user.username %></h1>
+<h1>Hello</h1>
 
-<h2>Hikes logged:</h2>
-<% @trails.each do |trail| %>
-<a href="/trails/<%= trail.id %>"><% trail.name %></a>
+<%@trails.each do |trail| %>
+
+<h2><%= trail.name %></h2>
 
 <% end %>
+
+<h3><a href="/trails/new">Create New Trail</a></h3>

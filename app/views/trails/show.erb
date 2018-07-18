@@ -1,0 +1,20 @@
+<h1><%= @user.username %>'s Trails visit:</h1>
+  <%= @trail.name %>
+  <br></br>
+  <%= @trail.location %>
+  <br></br>
+  <%= @trail.date %>
+  <br></br>
+  <%= @trail.distance %>
+  <br></br>
+  <%= @park.notes %>
+  <br></br>
+
+<button><a href="/trails/<%= @trail.id %>/edit"></a></button
+<br></br>
+
+<form action="/trails/<%= @trail.id %>/delete" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <input type='submit' value='Delete'>
+</form>
+<br>
