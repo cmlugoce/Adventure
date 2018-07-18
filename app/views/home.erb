@@ -11,6 +11,12 @@
     <div class="main">
 
       <h1> Welcome to Adventure, your hiking journal</h1>
+
+      <p class="flash"><% if flash.has?(:message) %>
+  <%= flash[:message] %>
+<% end %></p>
+
+<h3>Please <a href="/register">Register</a> or <a href="/login">Log In</a></h3>
      </div>
 
  </body>
