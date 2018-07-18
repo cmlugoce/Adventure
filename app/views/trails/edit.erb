@@ -1,0 +1,17 @@
+<h1>Edit your entry</h1>
+
+<form action='/trails/<%= @trail.id %>' method='post'>
+  <input id='hidden' type='hidden' name='_method' value='patch'>
+
+  Name: <input type="text" name="name" value='<%= @trail.name %>'>
+  <br></br>
+  Location: <input type="text" name="location" value='<%= @trail.location %>'>
+  <br></br>
+  Date: <input type="text" name="date" value='<%= @trail.date %>'>
+  <br></br>
+
+  Notes: <input type="text" name="notes" value='<%= @trail.notes %>'>
+  <br></br>
+
+  <input type='submit' id='submit' value='Edit'>
+</form>

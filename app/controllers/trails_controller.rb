@@ -12,7 +12,19 @@ get '/trails' do
   end
 end
 
-post '/trails' do
+
+
+
+ get '/trails/new' do
+   if logged_in?
+     erb :'/trails/new'
+
+   else
+     redirect '/login'
+   end
+ end
+
+ post '/trails/new' do
   if logged_in?
     @trail = Trail.new(name: params[:name], location: params[:location], date: params[:date], notes: params[:notes], distance: params[:distance], user_id: session[:id] )
    if @trail.save
@@ -21,16 +33,6 @@ post '/trails' do
      redirect '/trails'
    else
      redirect '/'
-   end
- end
-
-
- get 'trails/new' do
-   if logged_in?
-     erb :'/trails/new'
-
-   else
-     redirect '/login'
    end
  end
 
