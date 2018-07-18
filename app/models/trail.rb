@@ -1,6 +1,6 @@
 class Trail < ActiveRecord::Base
 
-has_many :trails
-has_secure_password
+validates_presence_of :name, :location, :date, :distance
+belongs_to :user
 
-end 
+end
