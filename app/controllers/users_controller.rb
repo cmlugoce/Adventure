@@ -8,7 +8,7 @@ class UsersController < ApplicationController
  get '/register' do
    if logged_in?
 
-     redirect '/trails'
+     redirect "/users/#{@user.id}"
 
    else
      erb :'/users/register'
@@ -17,12 +17,12 @@ class UsersController < ApplicationController
 
 
  post '/register' do
-   @user = User.new(:username => params[:username], :email => params[:email], :password => params[:password])
+   @user = User.create(:username => params[:username], :email => params[:email], :password => params[:password])
 
   if  @user.save
     @user.save
    session[:user_id] = @user.id
-   redirect '/trails'
+   redirect "/users/#{@user.id}"
 
  else
    flash[:message] = "Please fill out all the required fields"
@@ -33,7 +33,7 @@ end
 get '/login' do
   if logged_in?
     redirect '/trails'
-
+   flash[:message] = "Welcome Back, #{@user.username}!"
   else
     erb :'/users/login'
   end
@@ -43,27 +43,33 @@ end
    if @user && @user.authenticate(params[:password])
 
      session[:user_id] = @user.id
-     redirect "/trails"
+
+     flash[:message] = "Welcome Back, #{@user.username}!"
+     redirect "/users/#{@user.id}"
 
    else
-     flash[:message] = "Invalid password and/or username"
+     flash[:message] = "The username and password is incorrect. Please try again."
      redirect '/login'
    end
  end
 
+
+  get '/users/:id' do
+    @user = User.find_by_id(params[:id])
+    @user = current_user
+      erb :'/users/show'
+
+    end
+
 get '/logout' do
   if logged_in?
     session.clear
-
+    flash[:message] = "You have been logged out of your account."
     redirect '/'
 
 end
 end
-get '/users/:slug' do
-  @user = User.find_by_slug(params[:slug])
-  @trails = @user.trails
-erb :'/users/show'
-end
+
 
 
 

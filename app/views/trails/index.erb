@@ -2,7 +2,7 @@
 
 <%@trails.each do |trail| %>
 
-<h3><%= trail.name %></h3>
+<h3><a href ="/trails/<%= trail.id %>"><%= trail.name %></a></h3></a>
 Location:<label><%= trail.location %></label>
 
 
@@ -12,3 +12,5 @@ Location:<label><%= trail.location %></label>
 
 
 <a href="/logout">Logout</a>
+
+<a href="/users/<%= @user.id %>">Profile</a>

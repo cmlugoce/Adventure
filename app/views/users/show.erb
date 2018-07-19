@@ -3,8 +3,21 @@
 <%= flash[:message] %>
 <% end %></h1>
 
-<h1><%= @user.username %>'s Hiking Entries</h1>
+<h1><%= @user.slug %>'s Hiking Entries</h1>
+
 
 <% @user.trails.each do |trail| %>
- <a href= "/trails/<%= trail.id%>"><%= trail.name %></a>
- <% end %>
+<a href= "/trails/<%= trail.id %>"><%= trail.name %></a>
+<%= trail.location %>
+
+<% end %>
+
+
+<br></br>
+<ul>
+<%if @user.id == session[:user_id]%>
+<li><a href="/trails">View All Trails</a></li>
+<li><a href="/trails/new">Add a new trail</a></li>
+<li><a href="/logout">Logout</a></li>
+<%end%>
+</ul>
