@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 
   if  @user.save
     @user.save
-   session[:id] = @user.id
+   session[:user_id] = @user.id
    redirect '/trails'
 
  else
@@ -37,7 +37,7 @@ end
    @user = User.find_by(:username => params[:username])
    if @user && @user.authenticate(params[:password])
      flash[:notice] = "Welcome, #{@user.username}."
-     session[:id] = @user.id
+     session[:user_id] = @user.id
      redirect '/trails'
 
    else
