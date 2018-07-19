@@ -1,99 +1,94 @@
 class TrailsController < ApplicationController
 
 
+#create
 
-  get '/trails' do
+get '/trails' do
     if logged_in?
+      @user = current_user
+      session[:user_id] = @user.id
       @trails = Trail.all
       erb :'/trails/index'
 
     else
-      redirect '/login'
+      redirect to '/login'
+    end
+  end
 
+  get '/trails/new' do
+    if logged_in?
+      erb :'/trails/new'
+    else
+      redirect to '/login'
     end
   end
 
 
+  post '/trails' do
+    if params[:name] == "" || params[:location] == ""
+      redirect to '/trails/new'
 
-
-   get 'trails/new' do
-     if logged_in?
-
-       erb :'/trails/new'
-
-     else
-       redirect '/login'
-     end
-   end
-
-
-
-   post '/trails' do
-    if logged_in?
+    else
       @trail = Trail.new(name: params[:name], location: params[:location], date: params[:date], notes: params[:notes], distance: params[:distance], user_id: session[:id] )
-     if @trail.save
-       @trail.save
+      @trail.save
+      redirect to "/trails/#{@trail.id}"
+    end
+  end
 
-       redirect '/trails'
-     else
-       redirect '/'
-     end
+
+  #read
+
+
+
+
+
+  get '/trails/:id' do
+    if logged_in?
+      @user = current_user
+      @trail = Trail.find_by_id(params[:id])
+         erb :'/trails//show'
+
+       else
+         redirect '/login'
+       end
    end
 
-   get '/trails/:id' do
-     if logged_in?
-       @trail = Trail.find_by_id(params[:id])
-       erb :'/trails/show'
-
-     else
-       redirect '/login'
-
-     end
-   end
+   #update
 
    get '/trails/:id/edit' do
-     @trail = Trail.find_by_id(params[:id])
-
-     if logged_in? && @trail.user == current_user
-       erb :'/trails/edit'
-
-     else
-       redirect '/login'
-     end
-   end
-
-   patch '/trails/:id' do
      if logged_in?
-
        @trail = Trail.find_by_id(params[:id])
-       if !@trail.name.empty? && !@trail.location.empty? && !@trail.date.empty?
-       @trail.update(name: params[:name], location: params[:location], date: params[:date], notes: params[:notes], distance: params[:distance])
-       @trail.save
-     redirect "/trails/#{@trail.id}"
-   else
-     redirect "/trails/#{@trail.id}/edit"
-   end
-  else
-    redirect '/login'
-  end
-  end
-end
-delete '/trails/:id/delete' do
-   if logged_in?
 
-    @trail = Trail.find_by_id(params[:id])
-    if @trail && @trail.user == current_user
-      @trail.delete
+          erb :'/trails/edit'
+
+        else
+          redirect to '/login'
+        end
+      end
+
+    patch '/trails/:id' do
+
+         if logged_in? && params[:name] == "" || params[:location] == ""
+           redirect to "/trails/#{params[:id]}/edit"
+         else
+           @trail = Trail.find_by_id(params[:id])
+           @trail.update(name: params[:name], location: params[:location], date: params[:date], notes: params[:notes], distance: params[:distance])
+           @trail.save
+
+           redirect to "trails/#{@trail.id}"
+         end
+       end
+   #delete
+
+   delete '/trails/:id' do
+      @trail = Trail.find_by_id(params[:id])
+      @user = current_user
+      if logged_in?
+        @trail.delete
+
+        redirect to '/trails'
+      else
+        redirect "/trails/#{@trail.id}"
+      end
     end
-    redirect '/trails'
-
-
-     else
-    redirect '/login'
-    end
-  end
-
-
-
-
 end

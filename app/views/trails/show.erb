@@ -16,13 +16,14 @@
 
 
 
-<button><a href="/trails/<%= @trail.id %>/edit"></a></button
-<br></br>
+  <form action="/trails/<%= @trail.id %>/edit">
+        <input type="submit" value="edit" />
+    </form>
 
-<form action="/trails/<%= @trail.id %>/delete" method="post">
-  <input type="hidden" name="_method" value="delete">
-  <input type='submit' value='Delete'>
-</form>
+    <form action="" method="post">
+        <input id="hidden" type="hidden" name="_method" value="delete">
+        <input type="submit" value="delete" id="Delete">
+      </form>
 <br>
 
 <p><a href="/trails">View All Trails</a></p>
