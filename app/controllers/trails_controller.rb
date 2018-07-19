@@ -29,7 +29,7 @@ get '/trails' do
       redirect to '/trails/new'
 
     else
-      @trail = Trail.new(name: params[:name], location: params[:location], date: params[:date], notes: params[:notes], distance: params[:distance], user_id: session[:id] )
+      @trail = Trail.create(name: params[:name], location: params[:location], date: params[:date], notes: params[:notes], distance: params[:distance], user_id: session[:id] )
       @trail.save
       redirect to "/trails/#{@trail.id}"
     end

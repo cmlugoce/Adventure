@@ -1,4 +1,9 @@
+require 'rack-flash'
+
 class UsersController < ApplicationController
+
+ use Rack::Flash
+
 
  get '/register' do
    if logged_in?
@@ -20,7 +25,7 @@ class UsersController < ApplicationController
    redirect '/trails'
 
  else
-   flash[:message] = "Please fill up all the required fields"
+   flash[:message] = "Please fill out all the required fields"
    redirect '/register'
  end
 end
@@ -36,9 +41,9 @@ end
  post '/login' do
    @user = User.find_by(:username => params[:username])
    if @user && @user.authenticate(params[:password])
-     flash[:notice] = "Welcome, #{@user.username}."
+
      session[:user_id] = @user.id
-     redirect '/trails'
+     redirect "/trails"
 
    else
      flash[:message] = "Invalid password and/or username"
@@ -50,9 +55,8 @@ get '/logout' do
   if logged_in?
     session.clear
 
-    redirect '/login'
- else
-  redirect '/'
+    redirect '/'
+
 end
 end
 get '/users/:slug' do
