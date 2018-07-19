@@ -55,7 +55,7 @@ get '/logout' do
   redirect '/'
 end
 end
-get 'users/:slug' do
+get '/users/:slug' do
   @user = User.find_by_slug(params[:slug])
   @trails = @user.trails
 erb :'/users/show'

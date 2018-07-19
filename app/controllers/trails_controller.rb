@@ -15,24 +15,13 @@ end
 
 
 
- get '/trails/new' do
+ get 'trails/new' do
    if logged_in?
+
      erb :'/trails/new'
 
    else
      redirect '/login'
-   end
- end
-
- post '/trails/new' do
-  if logged_in?
-    @trail = Trail.new(name: params[:name], location: params[:location], date: params[:date], notes: params[:notes], distance: params[:distance], user_id: session[:id] )
-   if @trail.save
-     @trail.save
-
-     redirect '/trails'
-   else
-     redirect '/'
    end
  end
 
@@ -47,8 +36,20 @@ end
    end
  end
 
+ post '/trails' do
+  if logged_in?
+    @trail = Trail.new(name: params[:name], location: params[:location], date: params[:date], notes: params[:notes], distance: params[:distance], user_id: session[:id] )
+   if @trail.save
+     @trail.save
+
+     redirect '/trails'
+   else
+     redirect '/'
+   end
+ end
+
  get '/trails/:id/edit' do
-   @trails = Trail.find(params[:id])
+   @trail = Trail.find_by_id(params[:id])
 
    if logged_in? && @trail.user == current_user
      erb :'/trails/edit'
@@ -59,38 +60,40 @@ end
  end
 
  patch '/trails/:id' do
-   if params[:name] == "" || params[:location] == "" || params[:date] == ""
-     flash[:message] = "Please fill out the required fields."
-     redirect "/trails/#{params[:id]}/edit"
-   else
-     @trail = Trail.find(params[:id])
+   if logged_in?
+
+     @trail = Trail.find_by_id(params[:id])
+     if !@trail.name.empty? && !@trail.location.empty? && !@trail.date.empty?
      @trail.update(name: params[:name], location: params[:location], date: params[:date], notes: params[:notes], distance: params[:distance])
-   end
+     @trail.save
    redirect "/trails/#{@trail.id}"
+ else
+   redirect "/trails/#{@trail.id}/edit"
  end
+else
+  redirect '/login'
+end
 end
 
 
 delete '/trails/:id/delete' do
-  if logged_in? && current_user.trails.find_by(id: params[:id])
-    @trail = current_user.trails.find_by(id: params[:id])
-    @trail.delete
- if @trail && @trail.delete
+
+    @trail = Trail.find_by_id(params[:id])
+    if @trail && current_user.id
+      @trail.delete
+
     redirect '/trails'
 
-  else
-    redirect "/trails/#{params[:id]}"
+
+
+     else
+    redirect "/trails/#{@trail.id}"
+    end
   end
+
+
+
+
 end
-end
-
-
-
-
-
-
-
-
-
 
 end #of class

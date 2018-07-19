@@ -1,14 +1,20 @@
-<h1><%= @user.username %>'s Trails visit:</h1>
-  <%= @trail.name %>
+
+
+<h1> Trails visit:</h1>
+
+  <h3>Trail Name:<%= @trail.name %></h3>
   <br></br>
   <%= @trail.location %>
   <br></br>
-  <%= @trail.date %>
-  <br></br>
   <%= @trail.distance %>
   <br></br>
-  <%= @park.notes %>
+  <%= @trail.date %>
   <br></br>
+  <%@trail. notes %>
+  <br></br>
+
+
+
 
 <button><a href="/trails/<%= @trail.id %>/edit"></a></button
 <br></br>

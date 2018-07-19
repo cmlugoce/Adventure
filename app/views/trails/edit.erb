@@ -1,6 +1,6 @@
 <h1>Edit your entry</h1>
 
-<form action='/trails/<%= @trail.id %>' method='post'>
+<form action="/trails/<%= @trail.id %>" method='post'>
   <input id='hidden' type='hidden' name='_method' value='patch'>
 
   Name: <input type="text" name="name" value='<%= @trail.name %>'>
