@@ -3,7 +3,7 @@
 <%= flash[:message] %>
 <% end %></h1>
 
-<h1><%= @user.slug %>'s Hiking Entries</h1>
+<center><h1><%= @user.slug %>'s Hiking Entries</h1>
 
 
 <%@user.trails.each do |trail| %>
@@ -12,6 +12,7 @@
 
 <% end %>
 
+</center>
 
 <br></br>
 
