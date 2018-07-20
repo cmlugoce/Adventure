@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 
-  validates_presence_of :username, :email
+  validates_presence_of :username, :email, presence: true
   has_many :trails
   has_secure_password
 

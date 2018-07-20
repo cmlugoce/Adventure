@@ -8,7 +8,7 @@ class UsersController < ApplicationController
  get '/register' do
    if logged_in?
 
-     redirect "/users/#{@user.id}"
+     redirect "/users/#{@user.slug}"
 
    else
      erb :'/users/register'
@@ -21,8 +21,8 @@ class UsersController < ApplicationController
 
   if  @user.save
     @user.save
-   session[:user_id] = @user.id
-   redirect "/users/#{@user.id}"
+   session[:id] = @user.id
+   redirect "/users/#{@user.slug}"
 
  else
    flash[:message] = "Please fill out all the required fields"
@@ -42,10 +42,10 @@ end
    @user = User.find_by(:username => params[:username])
    if @user && @user.authenticate(params[:password])
 
-     session[:user_id] = @user.id
+     session[:id] = @user.id
 
      flash[:message] = "Welcome Back, #{@user.username}!"
-     redirect "/users/#{@user.id}"
+     redirect "/users/#{@user.slug}"
 
    else
      flash[:message] = "The username and password is incorrect. Please try again."
@@ -54,9 +54,9 @@ end
  end
 
 
-  get '/users/:id' do
-    @user = User.find_by_id(params[:id])
-    @user = current_user
+  get '/users/:slug' do
+    @user = User.find_by_slug(params[:slug])
+    @trails = @user.trails
       erb :'/users/show'
 
     end

@@ -6,7 +6,7 @@ class TrailsController < ApplicationController
 get '/trails' do
     if logged_in?
       @user = current_user
-      session[:user_id] = @user.id
+      session[:id] = @user.id
       @trails = Trail.all
       erb :'/trails/index'
 
@@ -46,7 +46,7 @@ get '/trails' do
     if logged_in?
       @user = current_user
       @trail = Trail.find_by_id(params[:id])
-         erb :'/trails//show'
+         erb :'/trails/show'
 
        else
          redirect '/login'
