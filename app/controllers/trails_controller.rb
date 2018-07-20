@@ -1,6 +1,8 @@
+require 'rack-flash'
+
 class TrailsController < ApplicationController
 
-
+  use Rack::Flash
 #create
 
 get '/trails' do
@@ -58,11 +60,16 @@ get '/trails' do
    get '/trails/:id/edit' do
      if logged_in?
        @trail = Trail.find_by_id(params[:id])
+       if @trail.user == current_user
 
           erb :'/trails/edit'
 
+            flash[:message] = "You do not have permission to edit or delete this post."
         else
-          redirect to '/login'
+
+          redirect to '/trails'
+
+        end
         end
       end
 
@@ -75,15 +82,15 @@ get '/trails' do
            @trail.update(name: params[:name], location: params[:location], date: params[:date], notes: params[:notes], distance: params[:distance])
            @trail.save
 
-           redirect to "trails/#{@trail.id}"
+           redirect to "/trails/#{@trail.id}"
          end
        end
    #delete
 
    delete '/trails/:id' do
       @trail = Trail.find_by_id(params[:id])
-      @user = current_user
-      if logged_in?
+      if @trail.user == current_user && logged_in?
+
         @trail.delete
 
         redirect to '/trails'

@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 
   if  @user.save
     @user.save
-   session[:id] = @user.id
+   session[:user_id] = @user.id
    flash[:message] = "Successfully created new user."
    redirect "/users/#{@user.slug}"
 
@@ -34,7 +34,7 @@ end
 get '/login' do
   if logged_in?
     redirect '/trails'
-   flash[:message] = "Welcome Back, #{@user.username}!"
+
   else
     erb :'/users/login'
   end
@@ -43,7 +43,7 @@ end
    @user = User.find_by(:username => params[:username])
    if @user && @user.authenticate(params[:password])
 
-     session[:id] = @user.id
+     session[:user_id] = @user.id
 
      flash[:message] = "Welcome Back, #{@user.username}!"
      redirect "/users/#{@user.slug}"

@@ -20,11 +20,17 @@
   <form action="/trails/<%= @trail.id %>/edit">
         <input type="submit" value="Edit" />
     </form>
+    <% if flash.has?(:message) %>
+<%= flash[:message] %>
+<% end %>
   <br></br>
+
+  <% if @user.id %>
     <form action="" method="post">
         <input id="hidden" type="hidden" name="_method" value="delete">
         <input type="submit" value="delete" id="Delete">
       </form>
+      <% end %>
 <br>
 
 <p><a href="/trails">View All Trails</a></p>
