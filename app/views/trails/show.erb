@@ -1,6 +1,6 @@
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-
-<h1>Trail information:</h1>
+<center><h1>Trail information:</h1>
 
   <h3>Trail Name:<%= @trail.name %></h3>
   <br></br>
@@ -15,26 +15,24 @@
 
 
 
+</center>
 
 
-  <form action="/trails/<%= @trail.id %>/edit">
-        <input type="submit" value="Edit" />
-    </form>
-    <% if flash.has?(:message) %>
-<%= flash[:message] %>
-<% end %>
-  <br></br>
+  <a href="/trails/<%= @trail.id %>/edit"><button type="button" class="btn btn-info">Edit</button></a>
 
-  <% if @user.id %>
-    <form action="" method="post">
+
+<br></br>
+
+
+    <form action="/" method="post">
         <input id="hidden" type="hidden" name="_method" value="delete">
-        <input type="submit" value="delete" id="Delete">
+        <input type="submit" value="Delete" id="Delete">
       </form>
-      <% end %>
-<br>
+
+<br></br>
 
 <p><a href="/trails">View All Trails</a></p>
 
-<a href="/logout">Logout</a>
+<div class="pull-right"><a href="/logout">Logout</a></div>
 
 <!-- <a href="/users/<%= @user.id %>">Homepage</a> -->

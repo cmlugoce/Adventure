@@ -3,9 +3,11 @@
 <%= flash[:message] %>
 <% end %></h1>
 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
 <center><h1><%= @user.slug %>'s Hiking Entries</h1>
 
-
+<div class="pull-right"><a href="/logout">Logout</a></div>
 <%@user.trails.each do |trail| %>
 <a href= "/trails/<%= trail.id %>"><h2><%= trail.name %></h2></a>
 
@@ -21,6 +23,5 @@
 
 <li><a href="/trails">View All Trails</a></li>
 <li><a href="/trails/new">Add a new trail</a></li>
-<li><a href="/logout">Logout</a></li>
 
 </ul>

@@ -3,13 +3,15 @@
 
  <head>
   <meta charset="utf-8">
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <title>Adventure: a hiking journal</title>
 
  </head>
   <body>
-    <div class="main">
 
+     <div class="pull-left"><a href="/register"><button type="button" class="btn btn-info btn-xs">REGISTER</button></a></div>
+    <div class="pull-right"><a href="/login"><button type="button" class="btn btn-success btn-xs">LOG IN</button></a></div>
+  <br></br>
     <center>  <h1> Welcome to Adventure, your hiking journal</h1>
       <h2>Log your hiking, and share them with the community</h2>
 
@@ -17,8 +19,43 @@
   <%= flash[:message] %>
 <% end %></p>
 
-<h3>Please <a href="/register">Register</a> or <a href="/login">Log In</a></h3>
-     </div>
+
+
+<br></br>
+
+  <div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="thumbnail">
+              <img src="../images/index-1.jpg" alt="landscape" style="width:100%">
+          <div class="caption">
+            <p>Hiking with the bff!.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="thumbnail">
+
+          <img src="../images/index-2.jpg" alt="Nature-stairway" style="width:100%">
+          <div class="caption">
+            <p>Stairway to heaven.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="thumbnail">
+
+          <img src="../images/index-3.jpg" alt="foot-bridge" style="width:100%">
+          <div class="caption">
+            <p>Wanderlust.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
 
  </body>
 </html>

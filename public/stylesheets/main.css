@@ -59,6 +59,14 @@
     overflow: hidden;
   }
 
+  input[type=submit] {
+      background-color: red;
+      color: white;
+      padding: 0.5rem 1rem;
+      margin-top: 2rem;
+
+    }
+
   .content {
     float: left;
     width: 60%; /* 480px / 800px */

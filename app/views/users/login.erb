@@ -2,14 +2,18 @@
 <%= flash[:message] %>
 <% end %>
 
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 <h1>Login to Adventure!</h1>
-<form method="post" action="/login">
-  <label>Username:</label>
-  <input type="text" name="username">
-  <label>Password:</label>
-  <input type="password" name="password">
-
-  <input type="submit" value="submit">
-</form>
+<form action="/login" method="post">
+    <div class="form-group">
+      <label for="username">Username:</label>
+      <input type="username" class="form-control" id="username" placeholder="Enter username" name="username">
+    </div>
+    <div class="form-group">
+      <label for="pwd">Password:</label>
+      <input type="password" class="form-control" id="password" placeholder="Enter password" name="password">
+    </div>
+    
+      <button type="submit" class="btn btn-default">Submit</button>
+  </form>
