@@ -6,7 +6,7 @@ class TrailsController < ApplicationController
 get '/trails' do
     if logged_in?
       @user = current_user
-      session[:id] = @user.id
+      session[:user_id] = @user.id
       @trails = Trail.all
       erb :'/trails/index'
 

@@ -22,6 +22,7 @@ class UsersController < ApplicationController
   if  @user.save
     @user.save
    session[:id] = @user.id
+   flash[:message] = "Successfully created new user."
    redirect "/users/#{@user.slug}"
 
  else

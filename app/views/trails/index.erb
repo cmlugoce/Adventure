@@ -1,18 +1,19 @@
-<h1>Welcome</h1>
+<h1>All users's trails</h1>
 
 
 
-<%@trails.each do |trail| %>
+<% @trails.each do |trail| %>
 
 
-<h3><a href ="/trails/<%= trail.id %>"><%= trail.name %></a></h3></a>
-Location:<label><%= trail.location %></label>
+<a href="/trails/<%= trail.id %>"><h3><%= trail.name %></h3></a>
+<b>Location:</b><label><%= trail.location %></label>
+<b>Distance (miles):</b> <label><%= trail.distance %></label>
 
 
 <% end %>
 
-<h3><a href="/trails/new">Create New Trail</a></h3>
 
+<br></br>
 
 <a href="/logout">Logout</a>
 
