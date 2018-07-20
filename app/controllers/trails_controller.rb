@@ -8,7 +8,7 @@ class TrailsController < ApplicationController
 get '/trails' do
     if logged_in?
       @user = current_user
-      session[:user_id] = @user.id
+      session[:id] = @user.id
       @trails = Trail.all
       erb :'/trails/index'
 
@@ -63,8 +63,6 @@ get '/trails' do
        if @trail.user == current_user
 
           erb :'/trails/edit'
-
-            flash[:message] = "You do not have permission to edit or delete this post."
         else
 
           redirect to '/trails'
@@ -87,15 +85,17 @@ get '/trails' do
        end
    #delete
 
-   delete '/trails/:id' do
+   delete '/trails/:id/delete' do
+     if logged_in?
+       @user == current_user
       @trail = Trail.find_by_id(params[:id])
-      if @trail.user == current_user && logged_in?
+
 
         @trail.delete
 
         redirect to '/trails'
       else
-        redirect "/trails/#{@trail.id}"
+        redirect "/trails/#{params[:id]}"
       end
     end
 end

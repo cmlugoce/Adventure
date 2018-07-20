@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 
   if  @user.save
     @user.save
-   session[:user_id] = @user.id
+   session[:id] = @user.id
    flash[:message] = "Successfully created new user."
    redirect "/users/#{@user.slug}"
 
@@ -43,7 +43,7 @@ end
    @user = User.find_by(:username => params[:username])
    if @user && @user.authenticate(params[:password])
 
-     session[:user_id] = @user.id
+     session[:id] = @user.id
 
      flash[:message] = "Welcome Back, #{@user.username}!"
      redirect "/users/#{@user.slug}"
