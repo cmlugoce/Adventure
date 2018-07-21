@@ -8,7 +8,7 @@ class TrailsController < ApplicationController
 get '/trails' do
     if logged_in?
       @user = current_user
-      session[:id] = @user.id
+      session[:user_id] = @user.id
       @trails = Trail.all
       erb :'/trails/index'
 
@@ -31,7 +31,7 @@ get '/trails' do
       redirect to '/trails/new'
 
     else
-      @trail = Trail.create(name: params[:name], location: params[:location], date: params[:date], notes: params[:notes], distance: params[:distance], user_id: session[:id] )
+      @trail = Trail.create(name: params[:name], location: params[:location], date: params[:date], notes: params[:notes], distance: params[:distance], user_id: session[:user_id] )
       @trail.save
       redirect to "/trails/#{@trail.id}"
     end

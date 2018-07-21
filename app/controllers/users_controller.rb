@@ -17,19 +17,19 @@ class UsersController < ApplicationController
 
 
  post '/register' do
-   @user = User.create(:username => params[:username], :email => params[:email], :password => params[:password])
+   @user = User.create(username: params[:username], email: params[:email], password: params[:password])
+    if  @user.save
+      session[:user_id] = @user.id
+      redirect to "/users/#{@user.slug}"
 
-  if  @user.save
-    @user.save
-   session[:id] = @user.id
-   flash[:message] = "Successfully created new user."
-   redirect "/users/#{@user.slug}"
-
- else
-   flash[:message] = "Please fill out all the required fields"
-   redirect '/register'
- end
-end
+    elsif User.find_by(username: params[:username])
+      flash[:message] = "This username is not available"
+      redirect to '/register'
+    else
+      flash[:message] = "Whoops! There was an error processing your informtion."
+      redirect to '/register'
+    end
+  end
 
 get '/login' do
   if logged_in?
@@ -43,7 +43,7 @@ end
    @user = User.find_by(:username => params[:username])
    if @user && @user.authenticate(params[:password])
 
-     session[:id] = @user.id
+     session[:user_id] = @user.id
 
      flash[:message] = "Welcome Back, #{@user.username}!"
      redirect "/users/#{@user.slug}"

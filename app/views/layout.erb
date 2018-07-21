@@ -27,7 +27,7 @@
           <% if logged_in? %>
             <a class="navbar-brand" href="/trails">Adventure</a>
           <% else %>
-            <a class="navbar-brand" href="/">Adventure</a>
+            <a class="navbar-brand" href="/trails">Adventure</a>
           <% end %>
         </div>
 
@@ -35,15 +35,17 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
             <% if !logged_in? %>
-              <li><a href="/users/<%= @user.slug %>">Home</a></li>
+
               <li><a href="/register">Register</a></li>
               <li><a href="/login">Log In</a></li>
             <% end %>
 
             <% if logged_in? %>
-              <li><a href="/users/<%= @user.slug %>" class="glyphicon glyphicon-home"></a></li>
-              <li><a href="/trails/new" class="glyphicon glyphicon-plus"></a></li>
+
+
+              <li><a href="/trails">Trails</a></li>
               <li><a href="/logout">Log Out</a></li>
+
             <% end %>
           </ul>
         </div><!-- /.navbar-collapse -->

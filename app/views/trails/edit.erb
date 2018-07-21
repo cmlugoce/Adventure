@@ -5,15 +5,15 @@
 <form action="/trails/<%= @trail.id %>" method='post'>
   <input id='hidden' type='hidden' name='_method' value='patch'>
 
-  <li>Name: <input type="text" name="name" value='<%= @trail.name %>'></li>
+  <li><input type="text" name="name" placeholder="Name" value='<%= @trail.name %>'></li>
   <br></br>
-  <li>Location: <input type="text" name="location" value='<%= @trail.location %>'></li>
+  <li><input type="text" name="location" placeholder="Location" value='<%= @trail.location %>'></li>
   <br></br>
-  <li>Date:     <input type="text" name="date" value='<%= @trail.date %>'></li>
+  <li><input type="text" name="date" placeholder="Date" value='<%= @trail.date %>'></li>
   <br></br>
-  <li>Distance (miles): <input type="text" name="distance" value='<%= @trail.distance %>'></li>
+  <li> <input type="text" name="distance" placeholder="Distance" value='<%= @trail.distance %>'></li>
    <br></br>
-<li><textarea rows="4" cols="50" name="content" placeholder="Notes" value='<%= @trail.notes %>'></textarea></li>
+<li><input type="text" name="notes" required="true" placeholder="Notes" value='<%= @trail.notes %>'></li>
   <br></br>
 </ul>
   <input type='submit' id='submit' value='Submit Changes'>
