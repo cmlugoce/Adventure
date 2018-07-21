@@ -1,12 +1,15 @@
 
 # Adventure
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/wine/quiz`. To experiment with that code, run `bin/console` for an interactive prompt.
+Welcome to Adventure, a Sinatra Web-app to log hiking trails! With Adventure, the user creates and account, add trails, notes and can modify them.
 
-TODO: Delete this and the text above, and describe your gem
+## Installation
+
+ You can install this app by running in your terminal `git clone git@github.com:cmlugoce/Adventure.git`
 
 ## Usage
 
+After cloning, change directory to Adventure `cd Adventure`, and run the following:
 ```ruby
 bundle install
 rake db:migrate
