@@ -1,20 +1,20 @@
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <h1>Edit your entry</h1>
-<ul>
+
 <form action="/trails/<%= @trail.id %>" method='post'>
   <input id='hidden' type='hidden' name='_method' value='patch'>
 
-  <li><input type="text" name="name" placeholder="Name" value='<%= @trail.name %>'></li>
+  <input type="text" name="name" placeholder="Name" value='<%= @trail.name %>'>
   <br></br>
-  <li><input type="text" name="location" placeholder="Location" value='<%= @trail.location %>'></li>
+  <input type="text" name="location" placeholder="Location" value='<%= @trail.location %>'>
   <br></br>
-  <li><input type="text" name="date" placeholder="Date" value='<%= @trail.date %>'></li>
+  <input type="text" name="date" placeholder="Date" value='<%= @trail.date %>'>
   <br></br>
-  <li> <input type="text" name="distance" placeholder="Distance" value='<%= @trail.distance %>'></li>
+  <input type="text" name="distance" placeholder="Distance" value='<%= @trail.distance %>'>
    <br></br>
-<li><input type="text" name="notes" required="true" placeholder="Notes" value='<%= @trail.notes %>'></li>
+<input type="text" name="notes" required="true" placeholder="Notes" value='<%= @trail.notes %>'>
   <br></br>
-</ul>
+
   <input type='submit' id='submit' value='Submit Changes'>
 </form>

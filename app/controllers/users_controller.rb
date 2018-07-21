@@ -18,16 +18,15 @@ class UsersController < ApplicationController
 
  post '/register' do
    @user = User.create(username: params[:username], email: params[:email], password: params[:password])
-    if  @user.save
+    if @user.valid?
       session[:user_id] = @user.id
-      redirect to "/users/#{@user.slug}"
-
-    elsif User.find_by(username: params[:username])
-      flash[:message] = "This username is not available"
-      redirect to '/register'
+      redirect "/users/#{@user.slug}"
+    elsif @user.invalid? && User.find_by(username: @user.username)
+       flash[:message] = "That username is already taken"
+      redirect '/register'
     else
-      flash[:message] = "Whoops! There was an error processing your informtion."
-      redirect to '/register'
+        flash[:message] = "You must fill out all fields to sign up."
+        redirect '/register'
     end
   end
 

@@ -1,8 +1,12 @@
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <br></br>
     <div class="pull-right">
-      <a href="/users/<%= @user.slug %>" class="btn btn-info btn-lg">
-            <span class="glyphicon glyphicon-home"></span> Home
+      <div class="btn-group">
+    <a href="/users/<%= @user.slug %>"><button type="button" class="btn btn-primary">Profile</button></a>
+    <a href="/trails/new"><button type="button" class="btn btn-success">Add Trail</button></a>
+
+  </div>
           </a>
       </div>
 

@@ -5,23 +5,16 @@
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-<center><h1><%= @user.slug %>'s Hiking Entries</h1>
+<div class="pull-right">
+  <a href="/logout"><button type="button" class="btn btn-primary">Logout</button></a>
+  <a href="/trails/new"><button type="button" class="btn btn-primary">Add Trail</button></a>
 
-<div class="pull-right"><a href="/logout">Logout</a></div>
+</div>
+<h1><%= @user.slug %>'s Hiking Entries</h1>
+
+
 <%@user.trails.each do |trail| %>
 <a href= "/trails/<%= trail.id %>"><h2><%= trail.name %></h2></a>
 
 
 <% end %>
-
-</center>
-
-<br></br>
-
-
-<ul>
-
-<li><a href="/trails">View All Trails</a></li>
-<li><a href="/trails/new">Add a new trail</a></li>
-
-</ul>

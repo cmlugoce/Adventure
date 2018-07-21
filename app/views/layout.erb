@@ -10,12 +10,12 @@
     <title>Adventure</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="/stylesheets/main.css" />
   </head>
   <body>
    <div class="wrapper">
-     <nav class="navbar navbar-default navbar-fixed-bottom" style="background-color: lightblue">
+     <nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: #00BFFF;">
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -25,9 +25,9 @@
             <span class="icon-bar"></span>
           </button>
           <% if logged_in? %>
-            <a class="navbar-brand" href="/trails">Adventure</a>
+            <a class="navbar-brand" href="/" style="color:white;">Adventure</a>
           <% else %>
-            <a class="navbar-brand" href="/trails">Adventure</a>
+            <a class="navbar-brand" href="/" style="color:white;">Adventure</a>
           <% end %>
         </div>
 
@@ -36,15 +36,16 @@
           <ul class="nav navbar-nav navbar-right">
             <% if !logged_in? %>
 
-              <li><a href="/register">Register</a></li>
-              <li><a href="/login">Log In</a></li>
+              <li><a href="/register" style="color: white;">Register</a></li>
+              <li><a href="/login" style="color: white;">Log In</a></li>
             <% end %>
 
             <% if logged_in? %>
 
 
-              <li><a href="/trails">Trails</a></li>
-              <li><a href="/logout">Log Out</a></li>
+              <li><a href="/trails" style="color: white;">Trails</a></li>
+
+              <li><a href="/logout" style="color: white;">Log Out</a></li>
 
             <% end %>
           </ul>

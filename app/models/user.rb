@@ -1,7 +1,10 @@
 class User < ActiveRecord::Base
 
-  validates_presence_of :username, :email, presence: true
-  has_many :trails
+has_many :trails
+
+  validates :username, presence: true, uniqueness: true
+  validates :email, presence: true, uniqueness: true
+
   has_secure_password
 
   def slug

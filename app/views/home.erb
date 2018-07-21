@@ -9,11 +9,9 @@
  </head>
   <body>
 
-     <div class="pull-left"><a href="/register"><button type="button" class="btn btn-info btn-xs">REGISTER</button></a></div>
-    <div class="pull-right"><a href="/login"><button type="button" class="btn btn-success btn-xs">LOG IN</button></a></div>
-  <br></br>
-    <center>  <h1> Welcome to Adventure, your hiking journal</h1>
-      <h2>Log your hiking, and share them with the community</h2>
+
+    <center> <h1> Welcome to Adventure, your hiking journal</h1>
+      <h3>Log your hikes, and share them with the community</h3>
 
       <p class="flash"><% if flash.has?(:message) %>
   <%= flash[:message] %>
@@ -29,7 +27,7 @@
       <div class="thumbnail">
               <img src="../images/index-1.jpg" alt="landscape" style="width:100%">
           <div class="caption">
-            <p>Hiking with the bff!.</p>
+            <p>Hiking with the bff!</p>
           </div>
         </a>
       </div>
