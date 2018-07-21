@@ -28,6 +28,6 @@ The app is available as open source under the terms of the [MIT License](https:/
 
 Everyone interacting in the Adventure project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/'cmlugoce'/Adventure/blob/master/CODE_OF_CONDUCT.md).
 
-##Credits
+## Credits
 
 Bootstrap references were obtained from [here](https://getbootstrap.com)
