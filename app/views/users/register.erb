@@ -1,7 +1,10 @@
-<% if flash.has?(:message) %>
-<%= flash[:message] %>
-<% end %>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<br></br>
+<% if flash.has?(:message) %>
+<h5 style="color: red;"><%= flash[:message] %></h5>
+<% end %>
+
 <h1>Register</h1>
 
 <form action='/register' method='POST'>

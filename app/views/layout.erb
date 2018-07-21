@@ -25,7 +25,7 @@
             <span class="icon-bar"></span>
           </button>
           <% if logged_in? %>
-            <a class="navbar-brand" href="/" style="color:white;">Adventure</a>
+            <a class="navbar-brand" href="/trails" style="color:white;">Adventure</a>
           <% else %>
             <a class="navbar-brand" href="/" style="color:white;">Adventure</a>
           <% end %>
@@ -42,9 +42,8 @@
 
             <% if logged_in? %>
 
-
+               <li><a href="/trails/new" class="glyphicon glyphicon-plus" style="color: white;"></a></li>
               <li><a href="/trails" style="color: white;">Trails</a></li>
-
               <li><a href="/logout" style="color: white;">Log Out</a></li>
 
             <% end %>

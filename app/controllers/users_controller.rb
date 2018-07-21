@@ -7,8 +7,7 @@ class UsersController < ApplicationController
 
  get '/register' do
    if logged_in?
-
-     redirect "/users/#{@user.slug}"
+    redirect "/users/#{@user.slug}"
 
    else
      erb :'/users/register'

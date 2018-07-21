@@ -55,5 +55,9 @@
   </div>
 </div>
 
+<% if flash.has?(:message) %>
+<h5 style="color: red;"><%= flash[:message] %></h5>
+<% end %>
+
  </body>
 </html>

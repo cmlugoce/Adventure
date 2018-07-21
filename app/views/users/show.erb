@@ -10,11 +10,11 @@
   <a href="/trails/new"><button type="button" class="btn btn-primary">Add Trail</button></a>
 
 </div>
-<h1><%= @user.slug %>'s Hiking Entries</h1>
+<h1> Hiking Entries</h1>
 
 
 <%@user.trails.each do |trail| %>
-<a href= "/trails/<%= trail.id %>"><h2><%= trail.name %></h2></a>
+<a href= "/trails/<%= trail.id %>"><h3><%= trail.name %></h3></a>
 
 
 <% end %>

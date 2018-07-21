@@ -6,8 +6,13 @@
 
     <a href="/users/<%= @user.slug %>"><button type="button" class="btn btn-primary">Profile</button></a>
     <a href="/trails/<%= @trail.id %>/edit"><button type="button" class="btn btn-success">Edit</button></a>
-    <a href="/trails/<%= @trail.id %>/delete"><button type="button" class="btn btn-danger">Delete</button></a>
+    </div>
 
+    <div class="pull-left">
+        <form action="/trails/<%= @trail.id %>/delete" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <input type='submit' value='Delete'>
+    </form>
   </div>
 
   </div>
@@ -24,3 +29,7 @@
   <h4>Date: <%= @trail.date %></h4>
 
   <h4>Notes: <%= @trail.notes %></h4>
+
+  <% if flash.has?(:message) %>
+<h5 style="color: red;"><%= flash[:message] %></h5>
+<% end %>

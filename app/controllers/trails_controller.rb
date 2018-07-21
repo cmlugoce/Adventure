@@ -64,8 +64,9 @@ get '/trails' do
 
           erb :'/trails/edit'
         else
+         flash[:message] = "You are not authorized to edit or delete this entry"
+          redirect to "/trails/#{params[:id]}"
 
-          redirect to '/trails'
 
         end
         end
@@ -74,28 +75,27 @@ get '/trails' do
     patch '/trails/:id' do
 
          if logged_in? && params[:name] == "" || params[:location] == ""
-           redirect to "/trails/#{params[:id]}/edit"
+            redirect to "/trails/#{params[:id]}/edit"
          else
            @trail = Trail.find_by_id(params[:id])
            @trail.update(name: params[:name], location: params[:location], date: params[:date], notes: params[:notes], distance: params[:distance])
            @trail.save
-
-           redirect to "/trails/#{@trail.id}"
+          redirect "/trails/#{params[:id]}"
          end
        end
    #delete
 
    delete '/trails/:id/delete' do
-     if logged_in?
-       @user == current_user
       @trail = Trail.find_by_id(params[:id])
-
-
+     if logged_in?
+       @user = current_user
+       if @user.trails.include?(@trail)
         @trail.delete
-
         redirect to '/trails'
       else
+        flash[:message] = "You are not authorized to delete this entry"
         redirect "/trails/#{params[:id]}"
+      end
       end
     end
 end
