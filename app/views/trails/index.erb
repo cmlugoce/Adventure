@@ -10,13 +10,13 @@
           </a>
       </div>
 
-<h1>All users's trails</h1>
+<h1>Hiking log</h1>
 
-<% @trails.each do |trail| %>
+<% @user.trails.each do |trail| %>
 
 
 <a href="/trails/<%= trail.id %>"><h3><%= trail.name %></h3></a>
-<b>Location: </b><label><%= trail.location %></label>
+Location: <label><%= trail.location %></label>
 
 
 
