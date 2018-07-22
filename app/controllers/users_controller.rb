@@ -63,7 +63,7 @@ end
 get '/logout' do
   if logged_in?
     session.clear
-    flash[:message] = "You have been logged out of your account."
+
     redirect '/'
 
 end

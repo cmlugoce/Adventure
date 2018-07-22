@@ -64,7 +64,7 @@ get '/trails' do
 
           erb :'/trails/edit'
         else
-         flash[:message] = "You are not authorized to edit or delete this entry"
+
           redirect to "/trails/#{params[:id]}"
 
 
@@ -93,7 +93,7 @@ get '/trails' do
         @trail.delete
         redirect to '/trails'
       else
-        flash[:message] = "You are not authorized to delete this entry"
+
         redirect "/trails/#{params[:id]}"
       end
       end
