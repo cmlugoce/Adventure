@@ -1,7 +1,7 @@
 
 # Adventure
 
-Welcome to Adventure, a Sinatra Web-app to log hiking trails! With Adventure, the user creates and account, add trails, notes and can modify them.
+Welcome to *Adventure*, a Sinatra Web-app to log hiking trails! With Adventure, the user creates and account, add trails, notes and can modify them.
 
 ## Installation
 
@@ -9,7 +9,7 @@ Welcome to Adventure, a Sinatra Web-app to log hiking trails! With Adventure, th
 
 ## Usage
 
-After cloning, change directory to Adventure `cd Adventure`, and run the following:
+After cloning, change directory to Adventure `cd adventure`, and run the following:
 ```ruby
 bundle install
 rake db:migrate
