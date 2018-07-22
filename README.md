@@ -31,3 +31,4 @@ Everyone interacting in the Adventure project’s codebases, issue trackers, cha
 ## Credits
 
 Bootstrap references were obtained from [here](https://getbootstrap.com)
+Project structure developed with Corneal gem.
