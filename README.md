@@ -5,7 +5,7 @@ Welcome to *Adventure*, a Sinatra Web-app to log hiking trails! With Adventure, 
 
 ## Installation
 
- You can install this app by running in your terminal `git clone git@github.com:cmlugoce/Adventure.git`
+ You can install this app by running in your terminal `git clone git@github.com:cmlugoce/adventure.git`
 
 ## Usage
 
