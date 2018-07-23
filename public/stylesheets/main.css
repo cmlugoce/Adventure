@@ -95,7 +95,18 @@
   .branding {
     clear: both;
   }
+ .error {
+   color: red;
+   font-family: 'Ubuntu', sans-serif;
+   font-weight: bold;
+ }
 
+  .success {
+    color: green;
+    font-family: 'Ubuntu', sans-serif;
+   font-weight: bold;
+
+  }
   footer.branding {
     border-top: 2px solid #ccc;
     margin-top: 20px;
