@@ -13,6 +13,7 @@ gem 'bcrypt'
 gem "tux"
 gem 'rack-flash3'
 gem 'ffaker', '~> 2.2'
+gem 'sinatra-flash'
 
 group :test do
   gem 'rspec'
