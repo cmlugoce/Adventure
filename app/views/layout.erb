@@ -51,9 +51,22 @@
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
+    <br></br>
+<div class="error">
+		<% if flash[:error] != "" %>
+	 		<p> <%= flash[:error] %> </p>
+		<% end %>
+	</div>
 
+	<div class="success">
+		<% if flash[:success] != "" %>
+	 		<p> <%= flash[:success] %> </p>
+		<% end %>
+	</div>
 
         <%= yield %>
+
+
 
       <footer class="branding">
         <center><small>&copy; 2018 <strong>Adventure. </strong>All Rights Reserved.</small></center>

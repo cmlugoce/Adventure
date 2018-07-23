@@ -1,8 +1,7 @@
-require 'rack-flash'
+
 
 class UsersController < ApplicationController
 
- use Rack::Flash
 
 
  get '/register' do
@@ -21,10 +20,10 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect "/users/#{@user.slug}"
     elsif @user.invalid? && User.find_by(username: @user.username)
-       flash[:message] = "That username is already taken"
+       flash[:error] = "That username is already taken"
       redirect '/register'
     else
-        flash[:message] = "You must fill out all fields to sign up."
+        flash[:error] = "You must fill out all fields to sign up."
         redirect '/register'
     end
   end
@@ -43,11 +42,11 @@ end
 
      session[:user_id] = @user.id
 
-     flash[:message] = "Welcome Back, #{@user.username}!"
+     flash[:success] = "Welcome Back, #{@user.username}!"
      redirect "/users/#{@user.slug}"
 
    else
-     flash[:message] = "The username and password is incorrect. Please try again."
+     flash[:error] = "Invalid username or password. Please try again."
      redirect '/login'
    end
  end
@@ -63,7 +62,7 @@ end
 get '/logout' do
   if logged_in?
     session.clear
-
+    flash[:success] = "You have been logged out of your account."
     redirect '/'
 
 end

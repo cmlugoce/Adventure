@@ -22,9 +22,7 @@
 
   <h4>Notes: <%= @trail.notes %></h4>
 
- <% if flash.has?(:message) %>
-<h5 style="color: red;"><%= flash[:message] %></h5>
-<% end %>
+
 
   <div class="pull-left">
         <form action="/trails/<%= @trail.id %>/delete" method="post">

@@ -1,9 +1,7 @@
-require 'rack-flash'
-
 class TrailsController < ApplicationController
 
-  use Rack::Flash
-#create
+
+
 
 get '/trails' do
     if logged_in?
@@ -33,13 +31,11 @@ get '/trails' do
     else
       @trail = Trail.create(name: params[:name], location: params[:location], date: params[:date], notes: params[:notes], distance: params[:distance], user_id: session[:user_id] )
       @trail.save
+      flash[:success] = "You have created a new trail"
       redirect to "/trails/#{@trail.id}"
+
     end
   end
-
-
-  #read
-
 
 
 
@@ -55,7 +51,7 @@ get '/trails' do
        end
    end
 
-   #update
+
 
    get '/trails/:id/edit' do
      if logged_in?
@@ -80,10 +76,11 @@ get '/trails' do
            @trail = Trail.find_by_id(params[:id])
            @trail.update(name: params[:name], location: params[:location], date: params[:date], notes: params[:notes], distance: params[:distance])
            @trail.save
+           flash[:success] = "Successfully edited trail."
           redirect "/trails/#{params[:id]}"
          end
        end
-   #delete
+
 
    delete '/trails/:id/delete' do
       @trail = Trail.find_by_id(params[:id])
@@ -91,6 +88,7 @@ get '/trails' do
        @user = current_user
        if @user.trails.include?(@trail)
         @trail.delete
+        flash[:success] = "Successfully deleted trail."
         redirect to '/trails'
       else
 
