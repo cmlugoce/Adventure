@@ -3,18 +3,20 @@
 <h1>Add a New Trail:</h1>
 
 
-<form action="/trails" method="POST">
-   <input type="text" name="name" required="true" placeholder="Name">
+<form action="/trails/new" method='post'>
 
-   <input type="text" name="location" required="true" placeholder="Location">
-
-  <input type="text" name="date" required="true" placeholder="Date">
-<br></br>
-  <input type="float" name="distance" placeholder="Distance(miles)">
+   Name:<br>
+  <input type="text" name="name"><br>
+   Location:<br>
+  <input type="text" name="location"><br>
+    Date:<br>
+  <input type="text" name="date"><br>
+    Distance:<br>
+  <input type="float" name="distance"><br>
+   Notes:<br>
+  <input type="text" name="notes" required="true">
   <br></br>
-  <input type="text" name="notes" required="true" placeholder="Notes">
 
-   <br></br>
 
-  <input type="submit" id="submit" value="Submit">
+  <input type='submit' id='submit' value='Submit'>
 </form>
