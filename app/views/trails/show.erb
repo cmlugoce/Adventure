@@ -5,9 +5,12 @@
     <div class="btn-group">
 
     <a href="/users/<%= @user.slug %>"><button type="button" class="btn btn-primary">Profile</button></a>
+   <% if @trail.user == current_user %>
     <a href="/trails/<%= @trail.id %>/edit"><button type="button" class="btn btn-success">Edit</button></a>
+    <% end %>
     </div>
   </div>
+
 
 
 
@@ -23,6 +26,7 @@
   <h4>Notes: <%= @trail.notes %></h4>
 
 
+<% if @trail.user == current_user %>
 
   <div class="pull-left">
         <form action="/trails/<%= @trail.id %>/delete" method="post">
@@ -30,3 +34,4 @@
         <input type='submit' value='Delete'>
     </form>
   </div>
+<% end %>

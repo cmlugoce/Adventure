@@ -8,6 +8,12 @@
 <h1>Welcome, <%="#{@user.username}" %></h1>
 
  <h2>You have logged <%= "#{@user.trails.size}" %> trips.</h2>
+
+
+ <% @user.trails.each do |trail| %>
+ <a href="/trails/<%= trail.id %>"><h3><%= trail.name %></h3></a>
+ <% end %>
+
 <h2> Ready to log more trails?</h2>
 
 
