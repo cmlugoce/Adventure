@@ -5,15 +5,18 @@
 
 
 
-<h1>Welcome, <%="#{@user.username}" %></h1>
+<h1><%="#{@user.username}" %>'s Adventures</h1>
 
- <h2>You have logged <%= "#{@user.trails.size}" %> trips.</h2>
-
+ <% if @user == current_user %>
+ <h2> You have logged <%= "#{@user.trails.size}"%> trip(s)</h2>
+ <% else %>
+ <h2>Trails logged: <%= "#{@user.trails.size}" %></h2>
+<% end %>
 
  <% @user.trails.each do |trail| %>
  <a href="/trails/<%= trail.id %>"><h3><%= trail.name %></h3></a>
  <% end %>
-
+ <% if @user == current_user %>
 <h2> Ready to log more trails?</h2>
 
 
@@ -24,3 +27,4 @@
 <center>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/zwhx8pQNpz4?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 </center>
+<% end %>

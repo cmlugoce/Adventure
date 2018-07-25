@@ -16,7 +16,7 @@
 
 
 <a href="/trails/<%= trail.id %>"><h3><%= trail.name %></h3></a>
-Posted by: <%= trail.user.username %><br>
+Posted by: <a href="/users/<%= trail.user.slug %>"><%= trail.user.username %></a><br>
 Location: <label><%= trail.location %></label>
 
 
