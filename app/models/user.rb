@@ -4,7 +4,6 @@ has_many :trails
 
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
-  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :password, length: { in: 6..20 }
 
   has_secure_password
