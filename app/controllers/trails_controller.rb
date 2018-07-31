@@ -69,29 +69,56 @@ get '/trails' do
       end
 
     patch '/trails/:id' do
-
-         if logged_in? && params[:name] == "" || params[:location] == ""
+      if logged_in? && params[:name] == "" || params[:location] == ""
             redirect to "/trails/#{params[:id]}/edit"
          else
            @trail = Trail.find_by_id(params[:id])
-           @trail.update(name: params[:name], location: params[:location], date: params[:date], notes: params[:notes], distance: params[:distance])
-           @trail.save
-           flash[:success] = "Successfully edited trail."
-          redirect "/trails/#{params[:id]}"
+            if @trail && @trail.user == current_user
+            @trail.update(name: params[:name], location: params[:location], date: params[:date], notes: params[:notes], distance: params[:distance])
+            flash[:success] = "Successfully edited trail."
+            redirect "/trails/#{params[:id]}"
+          else
+             flash[:error] = "You are not authorized to edit this trail"
+              redirect to '/trails'
+            end
          end
        end
 
 
+       #if logged_in?
+      #if params[:name] == "" || params[:location] == ""
+      #  redirect to "/trails/#{params[:id]}/edit"
+      #else
+      #@trail = Trail.find_by_id(params[:id])
+      #  if @trail && @trail.user == current_user
+      #    if @trail.update(name: params[:name], location: params[:location], date: params[:date], notes: params[:notes], distance: params[:distance])
+      #      redirect to "/trails/#{@trail.id}"
+      #    else
+      #      redirect to  "/trails/#{@trail.id}/edit"
+      #    end
+      #  else
+      #    flash[:error] = "You are not authorized to edit this trail"
+      #    redirect to '/trails'
+      #  end
+      #end
+    #else
+    #  redirect to '/login'
+    #end
+  #end
+
+
+
    delete '/trails/:id/delete' do
-      @trail = Trail.find_by_id(params[:id])
+
      if logged_in?
-       @user = current_user
-       if @user.trails.include?(@trail)
+       @trail = Trail.find_by_id(params[:id])
+
+       if @trail && @trail.user == current_user
         @trail.delete
         flash[:success] = "Successfully deleted trail."
         redirect to '/trails'
       else
-
+        flash[:error] = "You are not authorized to delete this trail"
         redirect "/trails/#{params[:id]}"
       end
       end
