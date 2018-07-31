@@ -85,29 +85,7 @@ get '/trails' do
        end
 
 
-       #if logged_in?
-      #if params[:name] == "" || params[:location] == ""
-      #  redirect to "/trails/#{params[:id]}/edit"
-      #else
-      #@trail = Trail.find_by_id(params[:id])
-      #  if @trail && @trail.user == current_user
-      #    if @trail.update(name: params[:name], location: params[:location], date: params[:date], notes: params[:notes], distance: params[:distance])
-      #      redirect to "/trails/#{@trail.id}"
-      #    else
-      #      redirect to  "/trails/#{@trail.id}/edit"
-      #    end
-      #  else
-      #    flash[:error] = "You are not authorized to edit this trail"
-      #    redirect to '/trails'
-      #  end
-      #end
-    #else
-    #  redirect to '/login'
-    #end
-  #end
-
-
-
+      
    delete '/trails/:id/delete' do
 
      if logged_in?
