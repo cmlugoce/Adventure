@@ -42,7 +42,6 @@ end
 
      session[:user_id] = @user.id
 
-     flash[:success] = "Welcome Back, #{@user.username}!"
      redirect "/users/#{@user.slug}"
 
    else
